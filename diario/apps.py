@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class EstudosConfig(AppConfig):
+class DiarioConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'estudos'
+    name = 'diario'

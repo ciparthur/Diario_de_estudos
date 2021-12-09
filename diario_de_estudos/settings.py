@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Minhas aplicações
-    'estudos.apps.EstudosConfig'
+    'diario.apps.DiarioConfig'
 ]
 
 MIDDLEWARE = [
