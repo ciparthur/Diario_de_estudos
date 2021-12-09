@@ -1,0 +1,18 @@
+{% extends 'diario/base.html' %}
+
+{% block content %}
+  <p>
+    Tópico: {{ topico }}
+  </p>
+
+  <ul>
+    {% for entrada in entradas %}
+      <li>
+        {{ entrada.data_ent }}
+        {{ entrada.texto|linebreaks }}
+      </li>
+    {% empty %}
+      <li>Não há assuntos registrados</li>
+    {% endfor %}
+  </ul>
+{% endblock content %}

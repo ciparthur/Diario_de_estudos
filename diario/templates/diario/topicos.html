@@ -3,13 +3,9 @@
 {% block content %}
   <ul>
     {% for topico in topicos %}
-      <li>
-        {{ topico }}
-      </li>
+      <li><a href="{% url 'topico' topico.id %}">{{ topico }}</a></li>
     {% empty %}
-      <li>
-        Nenhuma tópico encontrado.
-      </li>
+      <li>Nenhuma tópico encontrado.</li>
     {% endfor %}
   </ul>
 {% endblock content %}
