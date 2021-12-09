@@ -9,7 +9,7 @@ def index(request):
 
 def topicos(request):
     """Página de tópicos"""
-    topicos = Topico.objects.order_by('-data_pub')
+    topicos = Topico.objects.order_by('data_pub')
     contexto = {'topicos': topicos}
 
     return render(request, 'diario/topicos.html', contexto)
