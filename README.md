@@ -1,5 +1,13 @@
-# Diario de estudos
+# Diário de estudos
 
- Um site simples onde você pode criar uma conta e registrar seus estudos.
+Um site simples onde você pode criar uma conta e registrar seus estudos.
  
- link em breve
+<link>
+
+<imagem>
+
+<imagem>
+
+<imagem>
+
+<imagem>
