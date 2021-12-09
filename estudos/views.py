@@ -1,4 +1,5 @@
 from django.shortcuts import render
 
 def index(request):
-    return render('Olá, mundo!')
+    """Página inicial do projeto."""
+    return render(request, 'estudos/index.html')
