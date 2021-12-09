@@ -21,4 +21,4 @@ class Entrada(models.Model):
         if len(self.texto) < 50:
             return self.texto
         else:
-            return self.texto[:50]
+            return f'{self.texto[:50]}...'
