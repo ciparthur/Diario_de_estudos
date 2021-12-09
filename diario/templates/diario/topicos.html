@@ -1,0 +1,15 @@
+{% extends 'diario/base.html' %}
+
+{% block content %}
+  <ul>
+    {% for topico in topicos %}
+      <li>
+        {{ topico }}
+      </li>
+    {% empty %}
+      <li>
+        Nenhuma tópico encontrado.
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock content %}
