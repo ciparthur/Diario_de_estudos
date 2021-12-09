@@ -12,7 +12,7 @@ class Topico(models.Model):
 
 class Entrada(models.Model):
     """Criação dos assuntos e relações com os tópicos."""
-    topico = models.ForeignKey(Topico)
+    topico = models.ForeignKey(Topico, on_delete=models.CASCADE)
     texto = models.TextField()
     data_ent = models.DateTimeField(auto_now_add=True)
 
