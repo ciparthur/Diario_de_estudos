@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 from .models import Topico
+from .forms import FormularioTopico
 
 def index(request):
     """Página inicial"""
@@ -22,3 +25,22 @@ def topico(request, topico_id):
     contexto = {'topicos': topicos, 'entradas': entradas}
 
     return render(request, 'diario/topico.html', contexto)
+
+
+'''def novo_topico(request):
+    """Adiciona um novo assunto"""
+    if request.method != 'POST':
+        """Nenhum dado recebido; cria um formulário em branco."""
+        formulario = FormularioTopico()
+    else:
+        """Dados de POST submetidos; processa os dados."""
+        formulario = FormularioTopico(request.POST)
+
+        if formulario.is_valid():
+            formulario.save()
+            return HttpResponseRedirect(reverse('topicos'))
+
+    contexto = {'formulario': formulario}
+
+    return render(request, 'diario/novo_topico.html', contexto)
+'''
