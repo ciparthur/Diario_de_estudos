@@ -27,20 +27,25 @@ def topico(request, topico_id):
     return render(request, 'diario/topico.html', contexto)
 
 
-'''def novo_topico(request):
+def novo_topico(request):
     """Adiciona um novo assunto"""
-    if request.method != 'POST':
-        """Nenhum dado recebido; cria um formulário em branco."""
-        formulario = FormularioTopico()
-    else:
+    topico = Topico.objects.all()
+    
+    if request.method == 'POST':
         """Dados de POST submetidos; processa os dados."""
         formulario = FormularioTopico(request.POST)
 
         if formulario.is_valid():
-            formulario.save()
+            topico = Topico.objects.create()
+            topico.texto = formulario.cleaned_data['texto']
+            
+            topico.save()
+            
             return HttpResponseRedirect(reverse('topicos'))
+    else:
+        """Nenhum dado recebido; cria um formulário em branco."""
+        formulario = FormularioTopico()
 
-    contexto = {'formulario': formulario}
+    contexto = {'formulario': formulario, 'topico': topico}
 
     return render(request, 'diario/novo_topico.html', contexto)
-'''

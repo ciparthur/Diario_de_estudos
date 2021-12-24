@@ -1,10 +1,11 @@
-'''from django.forms import ModelForm
+from django import forms
 
 from .models import Topico
 
-class FormularioTopico(ModelForm):
-    class Meta:
-        modelo = Topico
-        campos = ['text']
-        labels = {'text': ''}
-'''
+class FormularioTopico(forms.Form):
+    texto = forms.CharField(max_length=200)
+    
+    def clean_data_texto(self):
+        data = self.cleaned_data['texto']
+        
+        return data
