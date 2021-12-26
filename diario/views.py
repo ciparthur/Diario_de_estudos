@@ -84,7 +84,7 @@ def editar_assunto(request, topico_pk):
             
             return HttpResponseRedirect(reverse('topicos'))
     else:
-        formulario = EditarEntrada(instance=entrada, data=request.POST)
+        formulario = EditarEntrada(instance=entrada)
 
     contexto = {'formulario': formulario, 'entrada': entrada}
     
