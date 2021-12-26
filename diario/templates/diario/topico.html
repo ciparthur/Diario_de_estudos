@@ -10,10 +10,9 @@
   <ul>
     {% for entrada in entradas %}
       <li>
-        {{ entrada.data_ent }}
+        <p>{{ entrada.data_ent }} <a href="{% url 'editar_assunto' entrada.pk %}">Editar assunto</a></p>
         {{ entrada.texto|linebreaks }}
       </li>
-      <p><a href="{% url 'editar_assunto' entrada.pk %}">Editar assunto</a></p>
     {% empty %}
       <li>Não há assuntos registrados</li>
     {% endfor %}
