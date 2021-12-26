@@ -5,10 +5,10 @@
         <p>Seu nome de usuário e senha não coincidem. Por favor, tente novamente.</p>
     {% endif %}
 
-    <form action="{% url 'usuarios/login' %}" method="POST">
+    <form action="" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Login">
-        <input type="hidden" name="next" value="{% url 'diario/index' %}">
+        <input type="hidden" name="next" value="{% url 'index' %}">
     </form>
 {% endblock %}

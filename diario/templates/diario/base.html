@@ -4,7 +4,7 @@
   {% if user.is_authenticated %}
     Olá, {{ user.username }}.
   {% else %}
-    <a href="{% url 'usuarios/login' %}">Login</a>
+    <a href="{% url 'login' %}">Login</a>
   {% endif %}
 </p>
 
