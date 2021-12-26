@@ -5,7 +5,8 @@
     Olá, {{ user.username }}.
     <a href="{% url 'logout' %}">Sair</a>
   {% else %}
-    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'login' %}">Login</a> - 
+    <a href="{% url 'cadastro' %}">Cadastro</a>
   {% endif %}
 </p>
 
