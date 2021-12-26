@@ -1,13 +1,11 @@
 {% extends 'diario/base.html' %}
 
 {% block content %}
-    <p>
-        Adicionar um novo tópico:
-    </p>
+    <h1>Editar assunto {{ entrada.topico }}</h1>
 
     <form action="" method="POST">
         {% csrf_token %}
         {{ formulario.as_p }}
-        <button name="submit">Adicionar tópico</button>
+        <button name="submit">Editar assunto</button>
     </form>
-{% endblock content %}
+{% endblock %}

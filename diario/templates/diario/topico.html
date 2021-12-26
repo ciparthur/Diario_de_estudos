@@ -2,8 +2,10 @@
 
 {% block content %}
   <p>
-    Tópico: {{ topico }}
+    Tópico: {{ topicos }}
   </p>
+
+  <p><a href="{% url 'novo_assunto' topicos.pk %}">Adicionar novo assunto</a></p>
 
   <ul>
     {% for entrada in entradas %}
@@ -11,6 +13,7 @@
         {{ entrada.data_ent }}
         {{ entrada.texto|linebreaks }}
       </li>
+      <p><a href="{% url 'editar_assunto' entrada.pk %}">Editar assunto</a></p>
     {% empty %}
       <li>Não há assuntos registrados</li>
     {% endfor %}

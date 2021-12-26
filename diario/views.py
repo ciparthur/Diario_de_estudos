@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from .models import Topico
-from .forms import FormularioTopico
+from .models import Topico, Entrada
+from .forms import FormularioTopico, FormularioEntrada, EditarEntrada
 
 def index(request):
     """Página inicial"""
@@ -29,7 +29,7 @@ def topico(request, topico_id):
 
 def novo_topico(request):
     """Adiciona um novo assunto"""
-    topico = Topico.objects.all()
+    topico = get_object_or_404(Topico)
     
     if request.method == 'POST':
         """Dados de POST submetidos; processa os dados."""
@@ -49,3 +49,43 @@ def novo_topico(request):
     contexto = {'formulario': formulario, 'topico': topico}
 
     return render(request, 'diario/novo_topico.html', contexto)
+
+def novo_assunto(request, topico_pk):
+    novo_ass = get_object_or_404(Topico, pk=topico_pk)
+    
+    if request.method == 'POST':
+        formulario = FormularioEntrada(request.POST)
+        
+        if formulario.is_valid():
+            novo_ass = novo_ass.entrada_set.create()
+            
+            novo_ass.texto = formulario.cleaned_data['texto']
+            
+            novo_ass.save()
+            
+            return HttpResponseRedirect(reverse('topicos'))
+    else:
+        formulario = FormularioEntrada()
+    
+    contexto = {'formulario': formulario, 'novo_ass': novo_ass}
+    
+    return render(request, 'diario/novo_assunto.html', contexto)
+
+def editar_assunto(request, topico_pk):
+    entrada = get_object_or_404(Entrada, pk=topico_pk)
+    
+    if request.method == 'POST':
+        formulario = EditarEntrada(instance=entrada, data=request.POST)
+        
+        if formulario.is_valid():
+            entrada.texto = formulario.cleaned_data['texto']
+            
+            entrada.save()
+            
+            return HttpResponseRedirect(reverse('topicos'))
+    else:
+        formulario = EditarEntrada(instance=entrada, data=request.POST)
+
+    contexto = {'formulario': formulario, 'entrada': entrada}
+    
+    return render(request, 'diario/editar_assunto.html', contexto)
