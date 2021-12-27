@@ -1,9 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 
 class Topico(models.Model):
     """Criação dos tópicos."""
     texto = models.CharField(max_length=200)
     data_pub = models.DateTimeField(auto_now_add=True)
+    proprietario = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         """Devolve o nome do tópico em strings."""
