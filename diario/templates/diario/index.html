@@ -1,7 +1,16 @@
 {% extends 'diario/base.html' %}
 
+{% block header %}
+    <div class="jumbotron">
+        <h1>Acompanhe o seu aprendizado.</h1>
+    </div>
+{% endblock %}
+
 {% block content %}
-  <p>
-    O Diario de estudos ajuda você a acompanhar o seu aprendizado, para qualquer tópico que estiver aprendendo.
-  </p>
+    <h2><a href="{% url 'cadastro' %}">Crie uma conta</a>
+        e tenha o seu próprio Diário de estudos e liste os tópicos sobre os quais está aprendendo.
+    </h2>
+    <h2>
+        Sempre que você aprender algo novo sobre um tópico específico, crie uma entrada resumindo o que você aprendeu.
+    </h2>
 {% endblock content %}

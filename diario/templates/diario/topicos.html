@@ -1,13 +1,20 @@
 {% extends 'diario/base.html' %}
 
+{% block header %}
+    <h2>Tópicos:</h2>
+{% endblock %}
+
 {% block content %}
-  <ul>
-    {% for topico in topicos %}
-      <li><a href="{% url 'topico' topico.id %}">{{ topico }}</a></li>
-    {% empty %}
-      <li>Nenhuma tópico encontrado.</li>
-    {% endfor %}
-  </ul>
-  <br>
-  <p><a href="{% url 'novo_topico' %}">Novo tópico</a></p>
+    <ul>
+        {% for topico in topicos %}
+            <li>
+                <h3>
+                    <a href="{% url 'topico' topico.id %}">{{ topico }}</a>
+                </h3>
+            </li>
+        {% empty %}
+            <li>Nenhuma tópico encontrado.</li>
+        {% endfor %}
+    </ul>
+    <h3><a href="{% url 'novo_topico' %}">Novo tópico</a></h3>
 {% endblock content %}

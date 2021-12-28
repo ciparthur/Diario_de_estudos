@@ -1,20 +1,28 @@
 {% extends 'diario/base.html' %}
 
+{% block header %}
+    <h2>{{ topicos }}</h2>
+{% endblock %}
+
 {% block content %}
-  <p>
-    Tópico: {{ topicos }}
-  </p>
+    <p><a href="{% url 'novo_assunto' topicos.pk %}">Adicionar novo assunto</a></p>
 
-  <p><a href="{% url 'novo_assunto' topicos.pk %}">Adicionar novo assunto</a></p>
+        {% for entrada in entradas %}
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3>
+                        {{ entrada.data_ent }}
+                        <small>
+                            <a href="{% url 'editar_assunto' entrada.pk %}">Editar assunto</a>
+                        </small>
+                    </h3>
+                </div>
+                <div class="panel-body">
+                    {{ entrada.texto|linebreaks }}
+                </div>
+            </div><!-- panel -->
+        {% empty %}
+            Ainda não há assuntos registrados.
+        {% endfor %}
 
-  <ul>
-    {% for entrada in entradas %}
-      <li>
-        <p>{{ entrada.data_ent }} <a href="{% url 'editar_assunto' entrada.pk %}">Editar assunto</a></p>
-        {{ entrada.texto|linebreaks }}
-      </li>
-    {% empty %}
-      <li>Não há assuntos registrados</li>
-    {% endfor %}
-  </ul>
 {% endblock content %}

@@ -1,13 +1,16 @@
 {% extends 'diario/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h2>Adicionar novo tópico:</h2>
+{% endblock %}
 
 {% block content %}
-    <p>
-        Adicionar um novo tópico:
-    </p>
-
-    <form action="" method="POST">
+    <form action="" method="POST" class="form">
         {% csrf_token %}
-        {{ formulario.as_p }}
-        <button name="submit">Adicionar tópico</button>
+        {% bootstrap_form formulario%}
+        {% buttons %}
+            <button name="submit" class="btn btn-primary">Adicionar tópico</button>
+        {% endbuttons %}
     </form>
 {% endblock content %}

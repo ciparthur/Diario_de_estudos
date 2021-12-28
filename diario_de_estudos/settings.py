@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     # Minhas aplicações
     'diario.apps.DiarioConfig',
     'usuarios.apps.UsuariosConfig',
+    
+    # Aplicações de terceiros
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +131,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Minhas configurações
 LOGIN_URL = '/usuarios/login'
+
+# Configurações para django-bootstrap3
+
+BOOTSTRAP3 = {
+    'include_jquery': True,
+}

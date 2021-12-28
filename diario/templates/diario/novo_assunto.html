@@ -1,12 +1,17 @@
 {% extends 'diario/base.html' %}
+{% load bootstrap3 %}
+
+{% block header %}
+    <h2>Tópico: {{ novo_ass.texto }}</h2>
+{% endblock %}
 
 {% block content %}
-    <p>Tópico: {{ novo_ass.texto }}</p>
-    <br>
-
-    <form action="" method="POST">
+    <form action="" method="POST" class="form">
         {% csrf_token %}
-        {{ formulario.as_p }}
-        <button name="submit">Adicionar assunto</button>
+        {% bootstrap_form formulario%}
+        
+        {% buttons %}
+            <button name="submit" class="btn btn-primary">Adicionar assunto</button>
+        {% endbuttons %}
     </form>
 {% endblock %}
