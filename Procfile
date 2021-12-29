@@ -1,0 +1,1 @@
+web: gunicorn diario_de_estudos.wsgi --log-file -
