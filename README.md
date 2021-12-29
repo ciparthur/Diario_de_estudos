@@ -2,7 +2,7 @@
 
 Um site simples onde você pode criar uma conta e registrar seus estudos.
  
-Link: _Em breve_
+Link: https://diario-de-estudos.herokuapp.com/
 
 ---
 
